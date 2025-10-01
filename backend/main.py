@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from core.config import settings
+
 app = FastAPI(
     # set title and description
     title="Choose Your Own Adventure Game API",
@@ -19,13 +21,13 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=settings.ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],    # GET, POST, PUT
     allow_headers=["*"],    # additional info
 )
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # only run if we are in main.py file (not imported)
     import uvicorn
     uvicorn.run(app="main:app", host="0.0.0.0", port=8000, reload=True)
         # uvicorn - webserver - allows to run the fastapi application - because it can' run unless it's connected to a server
