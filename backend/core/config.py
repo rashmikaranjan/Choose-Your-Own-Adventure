@@ -16,7 +16,7 @@ class Settings(BaseSettings):   # inherit from BaseSettings from pydantic
     
     ALLOWED_ORIGINS: str = ""
     
-    OPENAI_API_KEY: str
+    # OPENAI_API_KEY: str
     
     # whatever is specified here must map with the env variables in the .env file
     # if not, the program won't load correctly because the config will state that variable hasn't been specified in the configuration
